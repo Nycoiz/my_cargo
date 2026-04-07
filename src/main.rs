@@ -88,7 +88,21 @@ API token可以在crates.io撤销
     4. crate的代码已经准备好，并且通过了测试
     5. description字段提供了对crate的简要描述，会出现在crate搜索的结果里
     6. license字段指定了crate的许可证，多个license之间用OR分隔，明确用户在使用crate时的权利和义务，在http://spdx.org/licenses 上可以找到常用的许可证标识符
-
+修改crate的版本号
+    可以通过修改Cargo.toml中的version字段来更新crate的版本号,再重新发布
+    版本号应该遵循语义化版本控制（SemVer）规范，格式为MAJOR.MINOR.PATCH
+    例如，1.0.0表示第一个正式版本，1.1.0表示添加了新功能但保持向后兼容，1.0.1表示修复了bug但没有添加新功能
+从crates.io上撤销crate
+    可以通过运行cargo yank <version>命令来撤销特定版本的crate
+    这会将该版本标记为不可用，但不会删除它的源代码
+    已经依赖该版本的项目仍然可以使用它，但新项目将无法依赖该版本
+    如果需要完全删除一个版本，可以联系crates.io管理员进行处理
+yank意味着：
+    所有已经产生Cargo.lock文件的项目仍然可以使用被yank的版本
+    但是新项目将无法依赖被yank的版本
+取消yank
+    如果需要取消yank，可以运行cargo unyank <version>命令来取消yank特定版本的crate
+    这会将该版本重新标记为可用，使新项目可以依赖它
 */
 
 /*
