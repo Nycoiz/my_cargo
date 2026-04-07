@@ -107,6 +107,16 @@ yank意味着：
 
 /*
 通过workspace组织大项目
+cargo workspace
+    是一个功能强大的工具，用于组织和管理包含多个crate的大型项目
+    通过workspace，可以将多个相关的crate组合在一起,共享同一个Cargo.toml配置，方便开发、构建和发布
+创建workspace
+    1. 创建一个新的目录作为workspace的根目录
+    2. 在该目录下创建一个Cargo.toml文件，定义workspace的配置
+    3. 在Cargo.toml中使用[workspace]部分来指定成员crate的路径
+    4. 在workspace根目录下创建成员crate的目录，并在每个成员crate中创建自己的Cargo.toml文件
+    5. 在成员crate的Cargo.toml文件中定义各自的依赖和配置
+例子见my_workspace
 */
 
 /*
