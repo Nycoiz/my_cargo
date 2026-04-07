@@ -116,15 +116,37 @@ cargo workspace
     3. 在Cargo.toml中使用[workspace]部分来指定成员crate的路径
     4. 在workspace根目录下创建成员crate的目录，并在每个成员crate中创建自己的Cargo.toml文件
     5. 在成员crate的Cargo.toml文件中定义各自的依赖和配置
-例子见my_workspace
+例子见my_workspace（还没写🤗）
 */
 
 /*
-从crates.io安装库
+从crates.io安装二进制crate
+命令：cargo install <crate_name>
+    该命令会从crates.io上下载并安装指定的二进制crate
+    安装完成后，可以在命令行中直接使用该crate提供的命令
+    例如，安装ripgrep工具：cargo install ripgrep
+    安装完成后，可以直接使用rg命令来搜索文本
+    该命令会将二进制文件安装到~/.cargo/bin目录下
+    确保该目录在系统的PATH环境变量中，以便能够直接使用安装的二进制crate
+    可以通过运行cargo install --list命令来查看已经安装的二进制crate列表
+    可以通过运行cargo install --force <crate_name>来重新安装已经安装的二进制crate
+限制：只能安装具有二进制目标（binary target）的crate
+二进制目标：是一个可运行程序
+    由拥有src/main.rs或其他被指定为二进制文件的crate生成
+通常：README里面有关于crate的描述
+    拥有library target
+    拥有binary target
+    两者兼备
 */
 
 /*
 使用自定义命令扩展cargo
+cargo被设计成可以使用子命令来扩展
+例如：如果%PATH%中的某个二进制文件是cargo-something，那么就可以通过运行cargo something来执行该命令
+    例如，安装cargo-edit工具：cargo install cargo-edit
+    安装完成后，可以使用cargo add、cargo rm、cargo upgrade等命令来管理项目的依赖
+类似这样的自定义命令可以通过cargo --list来查看已经安装的cargo子命令列表
+优点：可以使用cargo install来安装扩展，像内置工具一样来运行
 */
 
 use my_cargo::kinds::PrimaryColor;
